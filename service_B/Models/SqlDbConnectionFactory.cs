@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace service_A.Models
+namespace service_B.Models
 {
     public class SqlDbConnectionFactory : IDbConnectionFactory
     {

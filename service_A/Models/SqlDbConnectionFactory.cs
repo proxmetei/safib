@@ -1,10 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Threading.Tasks;
+
 namespace service_A.Models
 {
-    public class SqlDbConnectionFactory
+    public class SqlDbConnectionFactory : IDbConnectionFactory
     {
-        public SqlDbConnectionFactory()
+        private string _connectionString;
+
+        public SqlDbConnectionFactory(string connectionString)
         {
+            _connectionString = connectionString;
+        }
+
+        public IDbConnection GetDbConnection()
+        {
+            return new Npgsql.NpgsqlConnection(_connectionString);
         }
     }
 }

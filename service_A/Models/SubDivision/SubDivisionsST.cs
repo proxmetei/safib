@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 namespace service_A.Models.SubDivision
 {
-    public class SubDivisions
+    /// <summary>
+    ///  Класс SubDivisionsST
+    ///  хранит статусы подразделений
+    /// </summary>
+    public static class SubDivisionsST
     {
-        public SubDivisions()
-        {
-        }
+       public static List<SubDivision> subdivisions;
     }
 }

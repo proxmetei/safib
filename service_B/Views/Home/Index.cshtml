@@ -1,0 +1,72 @@
+﻿@using service_B.Models.SubDivision;
+@model service_B.ViewModels.FileModel;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    string text = "";
+    bool first = true;
+
+    string createTree(int parent)
+    {
+        string str = "";
+        if (!first)
+            str += "<ul>";
+        else {
+            str += "<ul class=tree>";
+        }
+        first = false;
+        bool b = false;
+        foreach (SubDivision subDivision in @ViewBag.subDivisions)
+        {
+            if ((subDivision.Included_in_Id==null?0: subDivision.Included_in_Id.Value) == parent)
+            {
+                string status = (bool)subDivision.Status ? "Активировано" : "Заблокировано";
+                str += "<li><span><p name=name>" + @subDivision.Name +"</p><p>"+ status + "</p><p> Id:" + subDivision.Id + "</p></span>";
+                str += "" + @createTree(subDivision.Id) + "</li>";
+                b = true;
+            }
+
+        }
+        str += "</ul>";
+        if (!b) {
+            str = "";
+        }
+        return str;
+    }
+    text = createTree(0);
+}
+@Html.Raw(text)
+
+<form asp-controller="Home" asp-action="Create" method="post" enctype="multipart/form-data">
+    <div id="file" class="form-group">
+        <input asp-for="File" class="" type="file" />
+    </div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <input type="submit" value="Синхронизировать" class="btn btn-primary pink" />
+    </div>
+</form>
+<form>
+    <div class="form-group">
+        <label  class="control-label">Поиск</label>
+        <input id="search"  class="form-control" type="text" />
+    </div>
+</form>
+<script type="text/javascript">
+    @*контекстный поиск*@
+    document.getElementById('search').addEventListener('input', (e) => {
+        let val = e.target.value;
+        let arrayNodes = Array.from(document.getElementsByName("name"));
+        arrayNodes.forEach(e => e.parentElement.classList.remove('context'));
+        if (val !== "") {
+            let values = arrayNodes.map(e => e.textContent)
+            for (let i = 0; i < values.length; i++) {
+                if (values[i].indexOf(val) === -1) {
+                    arrayNodes[i].parentElement.classList.add('context')
+                }
+            }
+        }
+    });
+    </script>
