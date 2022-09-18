@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using service_A.Models.SubDivision;
-using Microsoft.Extensions.Logging;
 using service_A.Logic;
 using System.Threading;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using service_A.Models;
 using System.Net.Http;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Text;
 using service_A.Filters;
 
 namespace service_A.Controllers

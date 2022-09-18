@@ -1,0 +1,35 @@
+﻿CREATE SEQUENCE company.subdivision_id_seq
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 2147483647
+    CACHE 1;
+
+ALTER SEQUENCE company.subdivision_id_seq
+    OWNER TO postgres;
+CREATE TABLE company.subdivision
+(
+    id integer NOT NULL DEFAULT nextval('company.subdivision_id_seq'::regclass),
+    name text COLLATE pg_catalog."default" NOT NULL,
+    included_in_id integer,
+    CONSTRAINT subdivision_pkey PRIMARY KEY (id),
+    CONSTRAINT name_uniq UNIQUE (name),
+    CONSTRAINT subdiv_incl FOREIGN KEY (included_in_id)
+        REFERENCES company.subdivision (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE company.subdivision
+    OWNER to postgres;
+-- Index: fki_subdiv_incl
+
+-- DROP INDEX company.fki_subdiv_incl;
+
+CREATE INDEX fki_subdiv_incl
+    ON company.subdivision USING btree
+    (included_in_id ASC NULLS LAST)
+    TABLESPACE pg_default;

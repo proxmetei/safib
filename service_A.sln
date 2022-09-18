@@ -5,6 +5,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "service_A", "service_A\serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "service_B", "service_B\service_B.csproj", "{9E8A8F67-8124-439A-A8FF-EE1EA9288605}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4F65B9C6-FDF3-40FA-B330-E341CE2BF07E}"
+	ProjectSection(SolutionItems) = preProject
+		DB.txt = DB.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

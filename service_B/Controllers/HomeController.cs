@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,7 +10,6 @@ using service_B.ViewModels;
 using System.IO;
 using Newtonsoft.Json;
 using service_B.Models.Exceptions;
-using System.Text.Json;
 
 
 namespace service_B.Controllers

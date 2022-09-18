@@ -1,15 +1,6 @@
-using System;
-using Autofac;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Autofac.Extensions.DependencyInjection;
-using service_A.Logic;
-using service_A.Controllers;
 namespace service_A
 {
     public class Program

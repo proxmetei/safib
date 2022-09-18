@@ -1,12 +1,8 @@
-﻿using System;
-using Dapper;
+﻿using Dapper;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Web;
 using System.Net.Http;
-using System.Net;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace service_B.Models.SubDivision
@@ -86,7 +82,8 @@ namespace service_B.Models.SubDivision
         /// уведомление сервиса A об изменении данных в БД
         /// </summary>
         public async Task notifServiceA() {
-           await client.GetAsync("https://localhost:5005/status/start");
+            client.DefaultRequestHeaders.Add("apiKey", "MySecretKey");
+            await client.GetAsync("https://localhost:5005/status/start");
            
         }
     }
